@@ -3,6 +3,8 @@
 Primeira versão navegável do hub do Instituto Suassuna. Next.js (App Router) + TypeScript + Tailwind CSS v4.
 Sem backend, sem banco de dados e sem integrações: é a camada de identidade, arquitetura da informação e navegação.
 
+![Texto descritivo da imagem](Captura%20de%20Tela%202026-09-25%20às%2022.37.23.png)
+
 ## Rodar
 
 ```bash
