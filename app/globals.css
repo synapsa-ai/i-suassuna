@@ -1,0 +1,509 @@
+@import "tailwindcss";
+
+/*
+ * Identidade visual do Instituto Suassuna: verde institucional, dourado como assinatura e base creme.
+ * Proporção de referência: ~60% branco/creme, ~30% verde, ~10% dourado.
+ *
+ * Para trocar a identidade basta editar as variáveis de :root. Os componentes nunca usam hex direto: usam
+ * os tokens semânticos abaixo (text-heading, bg-surface, border-line, bg-gold…) e as classes hub-*.
+ *
+ * Contraste (medido): o dourado #C99A3D NÃO tem contraste para texto sobre claro (2,6:1). Ele aparece como
+ * fundo (botão, badge, número), borda, linha e detalhe; o texto sobre ele é sempre #173F35 (4,5:1).
+ * O muted #68736F passa (4,9:1) sobre branco e sobre o creme suave #FAF8F3, mas não sobre o creme #F5F0E6
+ * (4,3:1): por isso a página usa o creme suave e o creme mais escuro fica só em superfícies rebaixadas.
+ */
+:root {
+  --suassuna-green-dark: #173f35;
+  --suassuna-green: #245848;
+
+  --suassuna-gold: #c99a3d;
+  --suassuna-gold-soft: #e2c27a;
+
+  --suassuna-cream: #f5f0e6;
+  --suassuna-cream-soft: #faf8f3;
+
+  --suassuna-white: #ffffff;
+
+  --suassuna-text: #1f2f2a;
+  --suassuna-text-muted: #68736f;
+
+  --suassuna-border: #d9d5cb;
+
+  /* Valores adicionais pedidos no briefing */
+  --suassuna-text-soft: #46534e; /* texto das seções conceituais */
+  --suassuna-hover: #f0e9db; /* hover dos filtros */
+
+  --header-h: 4.5rem;
+}
+
+@theme inline {
+  /* Superfícies */
+  --color-page: var(--suassuna-cream-soft);
+  --color-surface: var(--suassuna-white);
+  --color-sunken: var(--suassuna-cream);
+  --color-line: var(--suassuna-border);
+  --color-hover: var(--suassuna-hover);
+
+  /* Texto */
+  --color-heading: var(--suassuna-green-dark);
+  --color-body: var(--suassuna-text);
+  --color-body-soft: var(--suassuna-text-soft);
+  --color-muted: var(--suassuna-text-muted);
+
+  /* Marca */
+  --color-brand: var(--suassuna-green-dark);
+  --color-brand-soft: var(--suassuna-green);
+  --color-gold: var(--suassuna-gold);
+  --color-gold-soft: var(--suassuna-gold-soft);
+
+  --font-sans: var(--font-roboto), Roboto, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+}
+
+@theme {
+  /* Cantos suavizados em relação à versão anterior (20–25px): mais sóbrios, ainda amigáveis. */
+  --radius-card: 16px; /* cards de guia, indicadores, blocos */
+  --radius-panel: 20px; /* painéis e containers */
+  --radius-field: 14px; /* busca */
+  --radius-group: 12px; /* grupos, nós e tiles internos */
+  --radius-tile: 12px; /* tile de ícone */
+  --radius-control: 10px; /* botões e itens do menu */
+  --radius-chip: 8px; /* chips e itens de lista */
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    background-color: var(--suassuna-cream-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    position: relative;
+    background-color: var(--suassuna-cream-soft);
+    color: var(--suassuna-text);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--suassuna-green-dark);
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  /* Foco: verde escuro sobre claro; branco sobre as áreas verdes (.on-dark). */
+  :focus-visible {
+    outline: 2px solid var(--suassuna-green-dark);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: rgb(201 154 61 / 0.35);
+    color: var(--suassuna-green-dark);
+  }
+
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+/*
+ * Receitas de componente. Layout e espaçamento ficam nos componentes (utilitários Tailwind); aqui entram
+ * as superfícies, bordas, estados e transições. Movimento discreto: 180ms e no máximo 2px de elevação.
+ */
+@layer components {
+  /* Áreas verdes (header, hero, rodapé): texto claro e foco branco. */
+  .on-dark {
+    color: rgb(255 255 255 / 0.82);
+  }
+
+  .on-dark :where(h1, h2, h3, h4) {
+    color: #fff;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: #fff;
+  }
+
+  /* Faixa do hero: degradê verde institucional, sem azul nem ciano. */
+  .hub-hero {
+    background-image: linear-gradient(135deg, var(--suassuna-green-dark) 0%, var(--suassuna-green) 100%);
+  }
+
+  /* Card do guia: branco, borda discreta, linha superior verde→dourado e realce dourado no hover. */
+  .hub-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+    background-color: var(--suassuna-white);
+    border: 1px solid var(--suassuna-border);
+    box-shadow: 0 8px 24px rgb(23 63 53 / 0.06);
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .hub-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--suassuna-green-dark), var(--suassuna-gold));
+    pointer-events: none;
+  }
+
+  .hub-card:has(a:focus-visible) {
+    outline: 2px solid var(--suassuna-green-dark);
+    outline-offset: 3px;
+  }
+
+  @media (hover: hover) {
+    .hub-card:hover {
+      border-color: var(--suassuna-gold);
+      box-shadow: 0 12px 28px rgb(23 63 53 / 0.1);
+    }
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .hub-card:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Indicadores e metadados sobre o verde: película branca a 8%, sem desfoque. */
+  .hub-tile {
+    border-radius: var(--radius-card);
+    background-color: rgb(255 255 255 / 0.08);
+    border: 1px solid rgb(255 255 255 / 0.12);
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      background-color 180ms ease;
+  }
+
+  @media (hover: hover) {
+    .hub-tile:hover {
+      background-color: rgb(255 255 255 / 0.11);
+      border-color: rgb(255 255 255 / 0.24);
+    }
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .hub-tile:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Bloco de conteúdo (etapas do conceito): branco com borda. */
+  .hub-box {
+    position: relative;
+    border-radius: var(--radius-card);
+    background-color: var(--suassuna-white);
+    border: 1px solid var(--suassuna-border);
+    box-shadow: 0 8px 24px rgb(23 63 53 / 0.06);
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  @media (hover: hover) {
+    .hub-box:hover {
+      border-color: var(--suassuna-gold);
+      box-shadow: 0 12px 28px rgb(23 63 53 / 0.1);
+    }
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .hub-box:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Containers (painéis) e seus cabeçalhos */
+  .hub-panel {
+    overflow: hidden;
+    border-radius: var(--radius-panel);
+    background-color: var(--suassuna-white);
+    border: 1px solid var(--suassuna-border);
+    box-shadow: 0 8px 24px rgb(23 63 53 / 0.06);
+  }
+
+  .hub-panel-head {
+    background-color: var(--suassuna-cream-soft);
+    border-bottom: 1px solid var(--suassuna-border);
+  }
+
+  /* Grupos internos: creme, com borda. Use bg-surface para nós brancos. */
+  .hub-group {
+    overflow: hidden;
+    border-radius: var(--radius-group);
+    background-color: var(--suassuna-cream);
+    border: 1px solid var(--suassuna-border);
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .hub-group-head {
+    background-color: rgb(255 255 255 / 0.6);
+    border-bottom: 1px solid var(--suassuna-border);
+  }
+
+  @media (hover: hover) {
+    .hub-group:hover {
+      border-color: var(--suassuna-gold);
+      box-shadow: 0 6px 18px rgb(23 63 53 / 0.08);
+    }
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .hub-group:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Item de lista dentro de painéis */
+  .hub-item {
+    padding: 12px 16px;
+    border-radius: var(--radius-group);
+    background-color: var(--suassuna-cream);
+    border: 1px solid var(--suassuna-border);
+    color: var(--suassuna-text-soft);
+    font-size: 14px;
+    line-height: 1.45;
+    transition: background-color 180ms ease;
+  }
+
+  @media (hover: hover) {
+    .hub-item:hover {
+      background-color: var(--suassuna-hover);
+    }
+  }
+
+  /* Destaque pontual: creme com filete dourado (em vez do degradê teal do visual anterior). */
+  .hub-highlight {
+    background-color: var(--suassuna-cream);
+    border: 1px solid rgb(201 154 61 / 0.55);
+    border-left: 3px solid var(--suassuna-gold);
+    border-radius: var(--radius-group);
+  }
+
+  /* Busca: branca, borda neutra; no foco, borda e anel dourados (discretos). */
+  .hub-field {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: var(--radius-field);
+    background-color: var(--suassuna-white);
+    border: 1px solid var(--suassuna-border);
+    color: var(--suassuna-text);
+    box-shadow: 0 1px 2px rgb(23 63 53 / 0.04);
+    transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .hub-field:focus-within {
+    border-color: var(--suassuna-gold);
+    box-shadow: 0 0 0 3px rgb(201 154 61 / 0.35);
+  }
+
+  /* Filtros: brancos com texto verde; selecionado em verde escuro (aria-pressed). */
+  .hub-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background-color: var(--suassuna-white);
+    border: 1px solid var(--suassuna-border);
+    color: var(--suassuna-green);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease;
+  }
+
+  @media (hover: hover) {
+    .hub-pill:hover {
+      background-color: var(--suassuna-hover);
+    }
+  }
+
+  .hub-pill[aria-pressed="true"] {
+    background-color: var(--suassuna-green-dark);
+    border-color: var(--suassuna-green-dark);
+    color: #fff;
+  }
+
+  /*
+   * Botões. Padrão = principal (fundo dourado, texto verde escuro).
+   * --ghost: secundário sobre o verde (contorno branco). --outline: secundário sobre claro (contorno verde).
+   *
+   * Sem transform aqui, de propósito: no card o botão é um link "esticado" (o ::after cobre o card inteiro).
+   * Qualquer transform no <a> o torna o containing block desse ::after, que encolhe até o botão, e o clique
+   * no corpo do card deixa de navegar.
+   */
+  .hub-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border-radius: var(--radius-control);
+    background-color: var(--suassuna-gold);
+    border: 1px solid var(--suassuna-gold);
+    color: var(--suassuna-green-dark);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease;
+  }
+
+  .hub-button--lg {
+    padding: 13px 24px;
+    font-size: 15px;
+  }
+
+  .hub-button--ghost {
+    background-color: transparent;
+    border-color: rgb(255 255 255 / 0.45);
+    color: #fff;
+  }
+
+  .hub-button--outline {
+    background-color: transparent;
+    border-color: rgb(23 63 53 / 0.35);
+    color: var(--suassuna-green-dark);
+  }
+
+  @media (hover: hover) {
+    .hub-button:hover {
+      background-color: var(--suassuna-gold-soft);
+      border-color: var(--suassuna-gold-soft);
+    }
+
+    .hub-button--ghost:hover {
+      background-color: rgb(255 255 255 / 0.08);
+      border-color: rgb(255 255 255 / 0.45);
+    }
+
+    .hub-button--outline:hover {
+      background-color: rgb(23 63 53 / 0.06);
+      border-color: var(--suassuna-green-dark);
+    }
+
+    /* No card, o botão acende em dourado quando o card inteiro recebe o mouse. */
+    .group:hover .hub-button {
+      background-color: var(--suassuna-gold);
+      border-color: var(--suassuna-gold);
+      color: var(--suassuna-green-dark);
+    }
+  }
+
+  /* Menu do header (sobre o verde escuro): hover em verde, ativo em película branca a 8%. */
+  .hub-navlink {
+    display: block;
+    padding: 10px 16px;
+    border-radius: var(--radius-control);
+    color: rgb(255 255 255 / 0.82);
+    font-weight: 500;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease;
+  }
+
+  @media (hover: hover) {
+    .hub-navlink:hover {
+      background-color: var(--suassuna-green);
+      color: #fff;
+    }
+  }
+
+  .hub-navlink[aria-current="page"] {
+    background-color: rgb(255 255 255 / 0.08);
+    color: #fff;
+  }
+
+  @media (hover: hover) {
+    .hub-navlink[aria-current="page"]:hover {
+      background-color: var(--suassuna-green);
+    }
+  }
+
+  /* Tile do ícone do guia: creme, ícone verde escuro. */
+  .hub-icon {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-tile);
+    background-color: var(--suassuna-cream);
+    border: 1px solid var(--suassuna-border);
+    color: var(--suassuna-green-dark);
+  }
+
+  /* Badge de status: ouro suave com texto verde escuro. */
+  .hub-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .hub-badge--gold {
+    background-color: var(--suassuna-gold-soft);
+    color: var(--suassuna-green-dark);
+  }
+
+  /* Chip de categoria: creme, borda neutra, texto verde. --on-dark para uso sobre o hero. */
+  .hub-chip {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: var(--radius-chip);
+    background-color: var(--suassuna-cream);
+    border: 1px solid var(--suassuna-border);
+    color: var(--suassuna-green);
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .hub-chip--on-dark {
+    background-color: rgb(255 255 255 / 0.08);
+    border-color: rgb(255 255 255 / 0.22);
+    color: rgb(255 255 255 / 0.92);
+  }
+}

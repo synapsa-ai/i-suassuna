@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="158" height="50" viewBox="0 0 158 50" role="img" aria-label="Instituto Suassuna">
+  <!-- PLACEHOLDER: substituir pela logo oficial do Instituto Suassuna (ver lib/brand.ts) -->
+  <rect x="0.75" y="0.75" width="156.5" height="48.5" rx="4" fill="none" stroke="#9aa7b4" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="79" y="29" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9" font-weight="600" fill="#4a5561">[LOGO INSTITUTO SUASSUNA]</text>
+</svg>
