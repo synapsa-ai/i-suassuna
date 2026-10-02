@@ -13,8 +13,8 @@ const roboto = Roboto({
   display: "swap",
 });
 
-const title = `${brand.hubTitle} | ${brand.name}`;
-const description = "Hub técnico de Guias de Implementação em Saúde Mental do Instituto Suassuna.";
+const title = `${brand.hubName} — ${brand.hubTitle}`;
+const description = "Conhecimento clínico, padrões e tecnologia para construir uma saúde mais interoperável. Guias de Implementação do Instituto Suassuna.";
 
 export const metadata: Metadata = {
   title: { default: title, template: `%s | ${brand.name}` },
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#173f35",
+  themeColor: "#103658",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -44,7 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Ir para o conteúdo
         </a>
         <HubHeader />
-        <main id="conteudo" className="flex-1">
+        <main id="conteudo" className="flex-1 pb-[60px] has-[[data-flush-end]]:pb-0">
           {children}
         </main>
         <HubFooter />

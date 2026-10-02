@@ -10,7 +10,7 @@ export function ExternalReferences() {
   return (
     <p
       aria-label="Referências externas"
-      className="hub-chip border-gold bg-transparent px-3 py-1 font-mono text-xs text-heading"
+      className="hub-chip border-accent bg-transparent px-3 py-1 font-mono text-xs text-heading"
     >
       {externalReferences.map((reference, index) => (
         <Fragment key={reference.id}>
@@ -22,7 +22,7 @@ export function ExternalReferences() {
               rel="noopener noreferrer"
               title={reference.description}
               aria-label={`${reference.label} (abre em nova aba)`}
-              className="underline decoration-gold underline-offset-2 hover:text-brand-soft"
+              className="underline decoration-accent underline-offset-2 hover:text-brand-soft"
             >
               {reference.label}
             </a>

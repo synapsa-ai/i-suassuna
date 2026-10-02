@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
-import { CloseIcon, MenuIcon } from "@/components/ui/icons";
+import { CloseIcon, MenuIcon, SearchIcon } from "@/components/ui/icons";
 import type { NavItem } from "@/lib/navigation";
 
 function isActive(item: NavItem, pathname: string): boolean {
@@ -33,8 +33,8 @@ export function HeaderNav({ items }: { items: readonly NavItem[] }) {
 
   return (
     <>
-      <nav aria-label="Principal" className="hidden lg:block">
-        <ul className="flex items-center gap-2 xl:gap-[30px]">
+      <nav aria-label="Principal" className="ml-auto mr-4 hidden lg:block">
+        <ul className="flex items-center gap-1 xl:gap-4">
           {items.map((item) => (
             <li key={item.label}>
               <Link
@@ -49,10 +49,23 @@ export function HeaderNav({ items }: { items: readonly NavItem[] }) {
         </ul>
       </nav>
 
+      <Link href="/guias#busca" className="hub-button ml-auto max-lg:hidden lg:ml-0">
+        <SearchIcon width={16} height={16} />
+        Buscar
+      </Link>
+
+      <Link
+        href="/guias#busca"
+        aria-label="Buscar guias"
+        className="ml-auto inline-flex size-11 items-center justify-center rounded-control text-heading transition-colors hover:bg-sunken lg:hidden"
+      >
+        <SearchIcon width={22} height={22} />
+      </Link>
+
       <button
         ref={buttonRef}
         type="button"
-        className="-mr-2 inline-flex size-11 items-center justify-center rounded-control text-white transition-colors hover:bg-brand-soft lg:hidden"
+        className="-mr-2 inline-flex size-11 items-center justify-center rounded-control text-heading transition-colors hover:bg-sunken lg:hidden"
         aria-expanded={open}
         aria-controls={panelId}
         aria-label={open ? "Fechar menu" : "Abrir menu"}
@@ -64,7 +77,7 @@ export function HeaderNav({ items }: { items: readonly NavItem[] }) {
       <div
         id={panelId}
         hidden={!open}
-        className="absolute inset-x-0 top-full border-b border-white/10 bg-brand shadow-[0_10px_30px_rgb(23_63_53/0.25)] lg:hidden"
+        className="absolute inset-x-0 top-full border-b border-line bg-surface shadow-[0_10px_30px_rgb(16_54_88/0.12)] lg:hidden"
       >
         <nav aria-label="Principal" className="mx-auto w-full max-w-[1200px] px-5 py-5 md:px-[30px]">
           <ul className="flex flex-col gap-2.5">

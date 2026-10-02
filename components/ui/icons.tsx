@@ -155,3 +155,129 @@ export function CpuIcon(props: IconProps) {
     </Icon>
   );
 }
+
+export function HeartPulseIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M19.5 12.6 12 20l-7.5-7.4a5 5 0 0 1 7.1-7.1l.4.4.4-.4a5 5 0 0 1 7.1 7.1Z" />
+      <path d="M3.5 12h4l1.5-3 3 6 1.5-3h4" />
+    </Icon>
+  );
+}
+
+export function FileTextIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" />
+      <path d="M14 3v5h5M9 13h6M9 17h6" />
+    </Icon>
+  );
+}
+
+export function SlidersIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M4 6h10M18 6h2M4 12h2M10 12h10M4 18h12M20 18h0" />
+      <circle cx="16" cy="6" r="2" />
+      <circle cx="8" cy="12" r="2" />
+      <circle cx="18" cy="18" r="2" />
+    </Icon>
+  );
+}
+
+export function CodeIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" />
+    </Icon>
+  );
+}
+
+export function NetworkIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <circle cx="12" cy="5" r="2.5" />
+      <circle cx="5" cy="19" r="2.5" />
+      <circle cx="19" cy="19" r="2.5" />
+      <path d="M11 7.3 6 16.7M13 7.3l5 9.4M7.5 19h9" />
+    </Icon>
+  );
+}
+
+export function GlobeIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.500 5.700 12 3Z" />
+    </Icon>
+  );
+}
+
+export function UserIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21a8 8 0 0 1 16 0" />
+    </Icon>
+  );
+}
+
+export function StethoscopeIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M6 3v6a4 4 0 0 0 8 0V3M6 3H5M14 3h1M10 13v2a5 5 0 0 0 10 0v-2" />
+      <circle cx="20" cy="11" r="2" />
+    </Icon>
+  );
+}
+
+export function BuildingIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M14 10h5a1 1 0 0 1 1 1v10M2 21h20M8 8h2M8 12h2M8 16h2" />
+    </Icon>
+  );
+}
+
+export function MapPinIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21Z" />
+      <circle cx="12" cy="9.500" r="2.500" />
+    </Icon>
+  );
+}
+
+export function FlaskIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M9 3h6M10 3v6L4.500 19a1.500 1.500 0 0 0 1.300 2.200h12.400A1.500 1.500 0 0 0 19.500 19L14 9V3M7.500 14h9" />
+    </Icon>
+  );
+}
+
+export function BriefcaseIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <rect x="3" y="7" width="18" height="13" rx="2" />
+      <path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18" />
+    </Icon>
+  );
+}
+
+export function DatabaseIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <ellipse cx="12" cy="5.500" rx="8" ry="3" />
+      <path d="M4 5.500v13c0 1.700 3.600 3 8 3s8-1.300 8-3v-13M4 12c0 1.700 3.600 3 8 3s8-1.300 8-3" />
+    </Icon>
+  );
+}
+
+export function BrainIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 6 1V4a3 3 0 0 0-3 0ZM15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-6 1" />
+    </Icon>
+  );
+}

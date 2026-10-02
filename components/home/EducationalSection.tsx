@@ -51,7 +51,7 @@ export function EducationalSection() {
               <div className="flex items-center gap-3">
                 <span
                   aria-hidden="true"
-                  className="flex size-8 shrink-0 items-center justify-center rounded-tile bg-gold text-base font-bold text-brand"
+                  className="flex size-8 shrink-0 items-center justify-center rounded-tile bg-accent text-base font-bold text-brand"
                 >
                   {index + 1}
                 </span>

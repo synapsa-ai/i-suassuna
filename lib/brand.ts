@@ -8,8 +8,10 @@
  */
 export const brand = {
   name: "Instituto Suassuna",
-  hubName: "Hub de Guias de Implementação em Saúde Mental",
-  hubTitle: "Guias de Implementação em Saúde Mental",
+  hubName: "Suassuna Saúde Digital",
+  hubTitle: "Guias de Implementação",
+  /** Vertical do Instituto à qual o Hub pertence (aparece ao lado da logo). */
+  vertical: "Saúde Digital",
   siteUrl: "https://institutosuassuna.com.br",
   /** Contato de suporte publicado no site oficial do Instituto. */
   contactEmail: "suporte@institutosuassuna.com",
@@ -18,11 +20,5 @@ export const brand = {
     width: 158,
     height: 50,
     alt: "Instituto Suassuna",
-    /**
-     * O fundo do Hub é um degradê azul/verde, e o Hub original usa logos brancas sobre ele.
-     * Com `true`, a logo é renderizada em branco por filtro CSS (funciona com qualquer arquivo de
-     * fundo transparente). Use `false` se o arquivo em `src` já for a versão branca.
-     */
-    monochromeWhite: true,
   },
 } as const;

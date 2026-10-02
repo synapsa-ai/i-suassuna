@@ -17,7 +17,7 @@ export function PageHeader({ breadcrumb, eyebrow, title, description, children }
     <HeroBand className="pb-10 pt-8 text-center md:pb-12 md:pt-12">
       <Container size="narrow">
         <Breadcrumb items={breadcrumb} />
-        {eyebrow && <p className="mt-6 text-xs font-medium uppercase tracking-[0.5px] text-gold-soft">{eyebrow}</p>}
+        {eyebrow && <p className="mt-6 text-xs font-medium uppercase tracking-[0.5px] text-accent-soft">{eyebrow}</p>}
         <h1
           className={`${eyebrow ? "mt-2.5" : "mt-6"} mx-auto max-w-[800px] text-[28px] font-bold leading-[1.17] min-[501px]:text-[35px] md:text-[45px]`}
         >

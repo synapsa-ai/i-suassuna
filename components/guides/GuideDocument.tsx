@@ -58,7 +58,7 @@ export function GuideDocument({ guide }: { guide: ImplementationGuide }) {
           Enquanto isso, o{" "}
           <Link
             href="/explorador"
-            className="font-medium text-brand-soft underline decoration-gold underline-offset-4 hover:text-heading"
+            className="font-medium text-brand-soft underline decoration-accent underline-offset-4 hover:text-heading"
           >
             Explorador de Modelos
           </Link>{" "}

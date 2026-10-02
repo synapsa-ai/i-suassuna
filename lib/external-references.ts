@@ -22,5 +22,6 @@ export const externalReferences: readonly ExternalReference[] = [
     id: "fhir",
     label: "FHIR",
     description: "Padrão internacional de interoperabilidade em saúde, uma das referências externas possíveis.",
+    href: "https://hl7.org/fhir/",
   },
 ];

@@ -35,10 +35,10 @@ export function GuideCatalog({ guides }: { guides: readonly ImplementationGuide[
 
   return (
     <div>
-      <Container size="narrow">
+      <Container size="narrow" id="busca" className="scroll-mt-[calc(var(--header-h)+1rem)]">
         <GuideSearch id={searchId} value={query} onChange={setQuery} />
 
-        <div className="mt-[25px]">
+        <div className="mt-5">
           <GuideFilters labelId={filtersLabelId} value={filter} onChange={setFilter} />
         </div>
 
@@ -61,7 +61,7 @@ export function GuideCatalog({ guides }: { guides: readonly ImplementationGuide[
           </ul>
         ) : (
           <div className="mx-auto max-w-[1000px] rounded-card border border-dashed border-line bg-surface px-5 py-10 text-center">
-            <SearchIcon width={48} height={48} className="mx-auto mb-4 text-gold" />
+            <SearchIcon width={48} height={48} className="mx-auto mb-4 text-accent-hover" />
             <p className="text-base font-medium text-heading">Nenhum guia encontrado</p>
             <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-body-soft">
               Nenhum Guia de Implementação corresponde à busca e ao filtro selecionados. Tente outros termos ou remova

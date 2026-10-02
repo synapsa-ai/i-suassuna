@@ -45,14 +45,14 @@ export function InteroperabilitySection() {
                   {!isLast && (
                     <span
                       aria-hidden="true"
-                      className="absolute inset-x-0 top-full flex h-9 items-center justify-center text-gold md:inset-x-auto md:left-full md:top-0 md:h-full md:w-9"
+                      className="absolute inset-x-0 top-full flex h-9 items-center justify-center text-accent md:inset-x-auto md:left-full md:top-0 md:h-full md:w-9"
                     >
                       <ArrowDownIcon width={18} height={18} className="md:hidden" />
                       <ArrowRightIcon width={18} height={18} className="hidden md:block" />
                     </span>
                   )}
 
-                  <span aria-hidden="true" className="absolute left-1/2 top-full hidden h-9 w-px bg-gold md:block" />
+                  <span aria-hidden="true" className="absolute left-1/2 top-full hidden h-9 w-px bg-accent md:block" />
                 </li>
               );
             })}

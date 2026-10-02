@@ -13,17 +13,17 @@ type GuideFiltersProps = {
   onChange: (value: GuideFilter) => void;
 };
 
-/** Filtros por categoria: pílulas brancas; a selecionada (aria-pressed) fica em verde escuro. */
+/** Filtros por categoria: pílulas brancas; a selecionada (aria-pressed) fica em azul escuro; rolam na horizontal no mobile. */
 export function GuideFilters({ labelId, value, onChange }: GuideFiltersProps) {
   return (
     <div>
-      <p id={labelId} className="mb-3 text-sm font-medium text-body-soft">
-        Filtrar por categoria:
+      <p id={labelId} className="sr-only">
+        Filtrar por categoria
       </p>
       <div
         role="group"
         aria-labelledby={labelId}
-        className="flex flex-wrap gap-2 max-[500px]:justify-center md:gap-2.5"
+        className="hub-scroll-x -mx-[15px] flex gap-2 overflow-x-auto px-[15px] py-1 md:mx-0 md:flex-wrap md:justify-center md:overflow-visible md:px-0 md:gap-2.5"
       >
         {options.map((option) => (
           <button
@@ -31,7 +31,7 @@ export function GuideFilters({ labelId, value, onChange }: GuideFiltersProps) {
             type="button"
             aria-pressed={option.id === value}
             onClick={() => onChange(option.id)}
-            className="hub-pill max-md:px-3 max-md:py-1.5 max-md:text-[13px]"
+            className="hub-pill shrink-0 max-md:px-3.5 max-md:py-1.5 max-md:text-[13px]"
           >
             {option.label}
           </button>

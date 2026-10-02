@@ -8,13 +8,13 @@ import {
 
 /** Nós brancos com borda; relacionados com borda dourada; selecionado em verde escuro. Conexões em dourado. */
 const colors = {
-  edge: "stroke-gold/60",
-  edgeActive: "stroke-gold",
-  arrow: "fill-gold/60",
-  arrowActive: "fill-gold",
+  edge: "stroke-accent/60",
+  edgeActive: "stroke-accent",
+  arrow: "fill-accent/60",
+  arrowActive: "fill-accent",
   node: "border-line bg-surface text-heading",
-  nodeHover: "hover:border-gold",
-  nodeRelated: "border-gold bg-surface text-heading",
+  nodeHover: "hover:border-accent",
+  nodeRelated: "border-accent bg-surface text-heading",
   nodeSelected: "border-brand bg-brand text-white",
 } as const;
 

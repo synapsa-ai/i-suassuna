@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { collaborators } from "@/lib/collaborators";
 
 /** Painel "Colaboradores" com um grupo por organização; o tile do ícone alterna verde escuro e dourado. */
-const tileStyles = ["bg-brand text-gold-soft", "bg-gold text-brand"];
+const tileStyles = ["bg-brand text-accent-soft", "bg-accent text-brand"];
 
 export function CollaboratorsSection() {
   return (

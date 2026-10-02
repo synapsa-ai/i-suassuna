@@ -23,5 +23,5 @@ export function CategoryTag({ category, tone = "light" }: { category: GuideCateg
 
 /** Status: ouro suave com texto verde escuro; serve sobre claro e sobre a faixa verde. */
 export function StatusBadge({ status }: { status: GuideStatusId }) {
-  return <span className="hub-badge hub-badge--gold">{guideStatuses[status].label}</span>;
+  return <span className="hub-badge hub-badge--accent">{guideStatuses[status].label}</span>;
 }

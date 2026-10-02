@@ -6,23 +6,23 @@ type GuideSearchProps = {
   onChange: (value: string) => void;
 };
 
-/** Campo de busca branco com borda neutra; o foco (borda e anel dourados) vem de .hub-field. */
+/** Campo de busca branco com borda neutra; o foco (borda e anel turquesa) vem de .hub-field. */
 export function GuideSearch({ id, value, onChange }: GuideSearchProps) {
   return (
-    <div role="search" className="hub-field max-md:px-4 max-md:py-2.5">
+    <div role="search" className="hub-field px-4 py-3 md:px-6 md:py-4">
       <label htmlFor={id} className="sr-only">
         Buscar guias de implementação
       </label>
-      <SearchIcon width={20} height={20} className="mr-3 shrink-0 text-muted" />
+      <SearchIcon width={22} height={22} className="mr-3 shrink-0 text-accent-hover" />
       <input
         id={id}
         type="search"
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        placeholder="Buscar guias de implementação..."
+        placeholder="Buscar guias, recursos ou áreas de saúde..."
         autoComplete="off"
         spellCheck={false}
-        className="min-w-0 flex-1 bg-transparent text-[15px] text-body outline-none placeholder:text-muted md:text-base"
+        className="min-w-0 flex-1 bg-transparent text-base text-body outline-none placeholder:text-muted md:text-base"
       />
       {value && (
         <button

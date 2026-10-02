@@ -67,7 +67,7 @@ export function ModelExplorer() {
               <button
                 type="button"
                 onClick={() => setSelectedId(null)}
-                className="text-sm font-medium text-brand-soft underline decoration-gold underline-offset-4 hover:text-heading"
+                className="text-sm font-medium text-brand-soft underline decoration-accent underline-offset-4 hover:text-heading"
               >
                 Limpar seleção
               </button>

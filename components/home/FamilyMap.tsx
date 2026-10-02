@@ -15,7 +15,7 @@ function FamilyLink({ guide, note, emphasis = false }: FamilyLinkProps) {
       className={`hub-group block w-full p-4 ${emphasis ? "border-brand bg-brand" : ""}`}
     >
       <span
-        className={`block text-xs font-medium uppercase tracking-[0.5px] ${emphasis ? "text-gold-soft" : "text-brand-soft"}`}
+        className={`block text-xs font-medium uppercase tracking-[0.5px] ${emphasis ? "text-accent-soft" : "text-brand-soft"}`}
       >
         {getCategory(guide.category).label}
       </span>
@@ -49,20 +49,20 @@ export function FamilyMap() {
       <div className="mt-5 flex flex-col items-center">
         <FamilyLink guide={core} emphasis note="Guia base · Implementação de referência: Synapsa" />
 
-        <span aria-hidden="true" className="hidden h-6 w-px bg-gold sm:block" />
+        <span aria-hidden="true" className="hidden h-6 w-px bg-accent sm:block" />
 
         <div className="relative mt-3 grid w-full gap-3 sm:mt-0 sm:grid-cols-2 sm:gap-0">
-          <span aria-hidden="true" className="absolute left-1/4 right-1/4 top-0 hidden h-px bg-gold sm:block" />
+          <span aria-hidden="true" className="absolute left-1/4 right-1/4 top-0 hidden h-px bg-accent sm:block" />
           {branches.map((guide) => (
             <div key={guide.id} className="relative flex flex-col items-center sm:px-2 sm:pt-6">
-              <span aria-hidden="true" className="absolute left-1/2 top-0 hidden h-6 w-px bg-gold sm:block" />
+              <span aria-hidden="true" className="absolute left-1/2 top-0 hidden h-6 w-px bg-accent sm:block" />
               <FamilyLink guide={guide} />
-              <span aria-hidden="true" className="hidden h-6 w-px bg-gold sm:block" />
+              <span aria-hidden="true" className="hidden h-6 w-px bg-accent sm:block" />
             </div>
           ))}
         </div>
 
-        <div className="mt-3 w-full rounded-group border border-dashed border-gold bg-page px-4 py-3 text-center sm:mt-0">
+        <div className="mt-3 w-full rounded-group border border-dashed border-accent bg-page px-4 py-3 text-center sm:mt-0">
           <p className="text-base font-semibold text-heading">Interoperabilidade</p>
           <p className="text-xs leading-5 text-muted">FHIR · APIs · Redes — camada futura, ainda não implementada</p>
         </div>

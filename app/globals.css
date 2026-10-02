@@ -1,60 +1,60 @@
 @import "tailwindcss";
 
 /*
- * Identidade visual do Instituto Suassuna: verde institucional, dourado como assinatura e base creme.
- * Proporção de referência: ~60% branco/creme, ~30% verde, ~10% dourado.
+ * Identidade de Suassuna Saúde Digital: azul profundo (tecnologia, confiança) + turquesa como cor de ação.
  *
  * Para trocar a identidade basta editar as variáveis de :root. Os componentes nunca usam hex direto: usam
- * os tokens semânticos abaixo (text-heading, bg-surface, border-line, bg-gold…) e as classes hub-*.
+ * os tokens semânticos abaixo (text-heading, bg-surface, bg-accent…) e as classes hub-*.
  *
- * Contraste (medido): o dourado #C99A3D NÃO tem contraste para texto sobre claro (2,6:1). Ele aparece como
- * fundo (botão, badge, número), borda, linha e detalhe; o texto sobre ele é sempre #173F35 (4,5:1).
- * O muted #68736F passa (4,9:1) sobre branco e sobre o creme suave #FAF8F3, mas não sobre o creme #F5F0E6
- * (4,3:1): por isso a página usa o creme suave e o creme mais escuro fica só em superfícies rebaixadas.
+ * Contraste: o turquesa #18AF91 NÃO tem contraste para texto sobre claro nem para texto branco sobre ele
+ * (~2,7:1). Ele aparece como fundo (botão, badge, número), borda, linha e detalhe; o texto sobre ele é sempre
+ * azul escuro #0B2B48 (~6:1). Texto turquesa só sobre azul escuro (--suassuna-accent-soft).
  */
 :root {
-  --suassuna-green-dark: #173f35;
-  --suassuna-green: #245848;
+  --suassuna-navy-dark: #103658;
+  --suassuna-navy-darker: #0b2b48;
+  --suassuna-navy: #1d4e7a; /* azul médio: texto de apoio sobre claro e hover sobre o azul escuro */
 
-  --suassuna-gold: #c99a3d;
-  --suassuna-gold-soft: #e2c27a;
+  --suassuna-accent: #18af91;
+  --suassuna-accent-hover: #13967d;
+  --suassuna-accent-soft: #7fdcc8; /* turquesa claro: texto/rótulo sobre azul escuro */
 
-  --suassuna-cream: #f5f0e6;
-  --suassuna-cream-soft: #faf8f3;
+  --suassuna-mist: #eef3f6; /* superfícies rebaixadas */
+  --suassuna-mist-soft: #f7f9fa; /* fundo da página */
 
   --suassuna-white: #ffffff;
 
-  --suassuna-text: #1f2f2a;
-  --suassuna-text-muted: #68736f;
+  --suassuna-text: #102a43;
+  --suassuna-text-muted: #657483;
+  --suassuna-text-soft: #44566a; /* texto das seções conceituais */
 
-  --suassuna-border: #d9d5cb;
-
-  /* Valores adicionais pedidos no briefing */
-  --suassuna-text-soft: #46534e; /* texto das seções conceituais */
-  --suassuna-hover: #f0e9db; /* hover dos filtros */
+  --suassuna-border: #e3e9ed;
+  --suassuna-hover: #e8f0f4; /* hover dos filtros */
 
   --header-h: 4.5rem;
 }
 
 @theme inline {
   /* Superfícies */
-  --color-page: var(--suassuna-cream-soft);
+  --color-page: var(--suassuna-mist-soft);
   --color-surface: var(--suassuna-white);
-  --color-sunken: var(--suassuna-cream);
+  --color-sunken: var(--suassuna-mist);
   --color-line: var(--suassuna-border);
   --color-hover: var(--suassuna-hover);
 
   /* Texto */
-  --color-heading: var(--suassuna-green-dark);
+  --color-heading: var(--suassuna-navy-dark);
   --color-body: var(--suassuna-text);
   --color-body-soft: var(--suassuna-text-soft);
   --color-muted: var(--suassuna-text-muted);
 
   /* Marca */
-  --color-brand: var(--suassuna-green-dark);
-  --color-brand-soft: var(--suassuna-green);
-  --color-gold: var(--suassuna-gold);
-  --color-gold-soft: var(--suassuna-gold-soft);
+  --color-brand: var(--suassuna-navy-dark);
+  --color-brand-deep: var(--suassuna-navy-darker);
+  --color-brand-soft: var(--suassuna-navy);
+  --color-accent: var(--suassuna-accent);
+  --color-accent-soft: var(--suassuna-accent-soft);
+  --color-accent-hover: var(--suassuna-accent-hover);
 
   --font-sans: var(--font-roboto), Roboto, ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Courier New", Courier, monospace;
@@ -76,7 +76,7 @@
     color-scheme: light;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    background-color: var(--suassuna-cream-soft);
+    background-color: var(--suassuna-mist-soft);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -87,7 +87,7 @@
 
   body {
     position: relative;
-    background-color: var(--suassuna-cream-soft);
+    background-color: var(--suassuna-mist-soft);
     color: var(--suassuna-text);
     font-family: var(--font-sans);
     font-weight: 400;
@@ -99,20 +99,20 @@
   h2,
   h3,
   h4 {
-    color: var(--suassuna-green-dark);
+    color: var(--suassuna-navy-dark);
     font-weight: 600;
     text-wrap: balance;
   }
 
   /* Foco: verde escuro sobre claro; branco sobre as áreas verdes (.on-dark). */
   :focus-visible {
-    outline: 2px solid var(--suassuna-green-dark);
+    outline: 2px solid var(--suassuna-navy-dark);
     outline-offset: 2px;
   }
 
   ::selection {
-    background: rgb(201 154 61 / 0.35);
-    color: var(--suassuna-green-dark);
+    background: rgb(24 175 145 / 0.35);
+    color: var(--suassuna-navy-dark);
   }
 
   input[type="search"]::-webkit-search-cancel-button,
@@ -140,9 +140,9 @@
     outline-color: #fff;
   }
 
-  /* Faixa do hero: degradê verde institucional, sem azul nem ciano. */
+  /* Faixa do hero: azul profundo com um degradê quase imperceptível. */
   .hub-hero {
-    background-image: linear-gradient(135deg, var(--suassuna-green-dark) 0%, var(--suassuna-green) 100%);
+    background-image: linear-gradient(160deg, var(--suassuna-navy-darker) 0%, var(--suassuna-navy-dark) 100%);
   }
 
   /* Card do guia: branco, borda discreta, linha superior verde→dourado e realce dourado no hover. */
@@ -152,7 +152,7 @@
     border-radius: var(--radius-card);
     background-color: var(--suassuna-white);
     border: 1px solid var(--suassuna-border);
-    box-shadow: 0 8px 24px rgb(23 63 53 / 0.06);
+    box-shadow: 0 8px 24px rgb(16 54 88 / 0.06);
     transition:
       transform 180ms ease,
       border-color 180ms ease,
@@ -164,25 +164,32 @@
     position: absolute;
     inset: 0 0 auto 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--suassuna-green-dark), var(--suassuna-gold));
+    background: var(--suassuna-accent);
+    opacity: 0;
+    transition: opacity 180ms ease;
     pointer-events: none;
   }
 
+  .hub-card:hover::before,
+  .hub-card:has(a:focus-visible)::before {
+    opacity: 1;
+  }
+
   .hub-card:has(a:focus-visible) {
-    outline: 2px solid var(--suassuna-green-dark);
+    outline: 2px solid var(--suassuna-navy-dark);
     outline-offset: 3px;
   }
 
   @media (hover: hover) {
     .hub-card:hover {
-      border-color: var(--suassuna-gold);
-      box-shadow: 0 12px 28px rgb(23 63 53 / 0.1);
+      border-color: var(--suassuna-accent);
+      box-shadow: 0 12px 28px rgb(16 54 88 / 0.1);
     }
   }
 
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .hub-card:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
   }
 
@@ -206,7 +213,7 @@
 
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .hub-tile:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
   }
 
@@ -216,7 +223,7 @@
     border-radius: var(--radius-card);
     background-color: var(--suassuna-white);
     border: 1px solid var(--suassuna-border);
-    box-shadow: 0 8px 24px rgb(23 63 53 / 0.06);
+    box-shadow: 0 8px 24px rgb(16 54 88 / 0.06);
     transition:
       transform 180ms ease,
       border-color 180ms ease,
@@ -225,14 +232,14 @@
 
   @media (hover: hover) {
     .hub-box:hover {
-      border-color: var(--suassuna-gold);
-      box-shadow: 0 12px 28px rgb(23 63 53 / 0.1);
+      border-color: var(--suassuna-accent);
+      box-shadow: 0 12px 28px rgb(16 54 88 / 0.1);
     }
   }
 
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .hub-box:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
   }
 
@@ -242,11 +249,11 @@
     border-radius: var(--radius-panel);
     background-color: var(--suassuna-white);
     border: 1px solid var(--suassuna-border);
-    box-shadow: 0 8px 24px rgb(23 63 53 / 0.06);
+    box-shadow: 0 8px 24px rgb(16 54 88 / 0.06);
   }
 
   .hub-panel-head {
-    background-color: var(--suassuna-cream-soft);
+    background-color: var(--suassuna-mist-soft);
     border-bottom: 1px solid var(--suassuna-border);
   }
 
@@ -254,7 +261,7 @@
   .hub-group {
     overflow: hidden;
     border-radius: var(--radius-group);
-    background-color: var(--suassuna-cream);
+    background-color: var(--suassuna-mist);
     border: 1px solid var(--suassuna-border);
     transition:
       transform 180ms ease,
@@ -269,14 +276,14 @@
 
   @media (hover: hover) {
     .hub-group:hover {
-      border-color: var(--suassuna-gold);
-      box-shadow: 0 6px 18px rgb(23 63 53 / 0.08);
+      border-color: var(--suassuna-accent);
+      box-shadow: 0 6px 18px rgb(16 54 88 / 0.08);
     }
   }
 
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .hub-group:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
   }
 
@@ -284,7 +291,7 @@
   .hub-item {
     padding: 12px 16px;
     border-radius: var(--radius-group);
-    background-color: var(--suassuna-cream);
+    background-color: var(--suassuna-mist);
     border: 1px solid var(--suassuna-border);
     color: var(--suassuna-text-soft);
     font-size: 14px;
@@ -298,11 +305,11 @@
     }
   }
 
-  /* Destaque pontual: creme com filete dourado (em vez do degradê teal do visual anterior). */
+  /* Destaque pontual: névoa com filete turquesa. */
   .hub-highlight {
-    background-color: var(--suassuna-cream);
-    border: 1px solid rgb(201 154 61 / 0.55);
-    border-left: 3px solid var(--suassuna-gold);
+    background-color: var(--suassuna-mist);
+    border: 1px solid rgb(24 175 145 / 0.55);
+    border-left: 3px solid var(--suassuna-accent);
     border-radius: var(--radius-group);
   }
 
@@ -315,15 +322,15 @@
     background-color: var(--suassuna-white);
     border: 1px solid var(--suassuna-border);
     color: var(--suassuna-text);
-    box-shadow: 0 1px 2px rgb(23 63 53 / 0.04);
+    box-shadow: 0 1px 2px rgb(16 54 88 / 0.04);
     transition:
       border-color 180ms ease,
       box-shadow 180ms ease;
   }
 
   .hub-field:focus-within {
-    border-color: var(--suassuna-gold);
-    box-shadow: 0 0 0 3px rgb(201 154 61 / 0.35);
+    border-color: var(--suassuna-accent);
+    box-shadow: 0 0 0 3px rgb(24 175 145 / 0.35);
   }
 
   /* Filtros: brancos com texto verde; selecionado em verde escuro (aria-pressed). */
@@ -335,7 +342,7 @@
     border-radius: 999px;
     background-color: var(--suassuna-white);
     border: 1px solid var(--suassuna-border);
-    color: var(--suassuna-green);
+    color: var(--suassuna-navy);
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
@@ -352,8 +359,8 @@
   }
 
   .hub-pill[aria-pressed="true"] {
-    background-color: var(--suassuna-green-dark);
-    border-color: var(--suassuna-green-dark);
+    background-color: var(--suassuna-navy-dark);
+    border-color: var(--suassuna-navy-dark);
     color: #fff;
   }
 
@@ -372,9 +379,9 @@
     gap: 6px;
     padding: 10px 18px;
     border-radius: var(--radius-control);
-    background-color: var(--suassuna-gold);
-    border: 1px solid var(--suassuna-gold);
-    color: var(--suassuna-green-dark);
+    background-color: var(--suassuna-accent);
+    border: 1px solid var(--suassuna-accent);
+    color: var(--suassuna-navy-dark);
     font-size: 13px;
     font-weight: 500;
     text-decoration: none;
@@ -399,14 +406,14 @@
 
   .hub-button--outline {
     background-color: transparent;
-    border-color: rgb(23 63 53 / 0.35);
-    color: var(--suassuna-green-dark);
+    border-color: rgb(16 54 88 / 0.35);
+    color: var(--suassuna-navy-dark);
   }
 
   @media (hover: hover) {
     .hub-button:hover {
-      background-color: var(--suassuna-gold-soft);
-      border-color: var(--suassuna-gold-soft);
+      background-color: var(--suassuna-accent-soft);
+      border-color: var(--suassuna-accent-hover);
     }
 
     .hub-button--ghost:hover {
@@ -415,24 +422,25 @@
     }
 
     .hub-button--outline:hover {
-      background-color: rgb(23 63 53 / 0.06);
-      border-color: var(--suassuna-green-dark);
+      background-color: rgb(16 54 88 / 0.06);
+      border-color: var(--suassuna-navy-dark);
     }
 
     /* No card, o botão acende em dourado quando o card inteiro recebe o mouse. */
     .group:hover .hub-button {
-      background-color: var(--suassuna-gold);
-      border-color: var(--suassuna-gold);
-      color: var(--suassuna-green-dark);
+      background-color: var(--suassuna-accent);
+      border-color: var(--suassuna-accent);
+      color: var(--suassuna-navy-dark);
     }
   }
 
-  /* Menu do header (sobre o verde escuro): hover em verde, ativo em película branca a 8%. */
+  /* Menu do header (sobre branco): texto azul escuro, hover em névoa, ativo com filete turquesa. */
   .hub-navlink {
+    position: relative;
     display: block;
     padding: 10px 16px;
     border-radius: var(--radius-control);
-    color: rgb(255 255 255 / 0.82);
+    color: var(--suassuna-text);
     font-weight: 500;
     transition:
       background-color 180ms ease,
@@ -441,34 +449,37 @@
 
   @media (hover: hover) {
     .hub-navlink:hover {
-      background-color: var(--suassuna-green);
-      color: #fff;
+      background-color: var(--suassuna-mist);
+      color: var(--suassuna-navy-dark);
     }
   }
 
   .hub-navlink[aria-current="page"] {
-    background-color: rgb(255 255 255 / 0.08);
-    color: #fff;
+    color: var(--suassuna-navy-dark);
+    font-weight: 700;
   }
 
-  @media (hover: hover) {
-    .hub-navlink[aria-current="page"]:hover {
-      background-color: var(--suassuna-green);
-    }
+  .hub-navlink[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    inset: auto 16px 4px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: var(--suassuna-accent);
   }
 
-  /* Tile do ícone do guia: creme, ícone verde escuro. */
+  /* Tile do ícone do guia: névoa, ícone azul escuro. */
   .hub-icon {
     display: flex;
     flex: none;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 80px;
+    width: 64px;
+    height: 64px;
     border-radius: var(--radius-tile);
-    background-color: var(--suassuna-cream);
+    background-color: var(--suassuna-mist);
     border: 1px solid var(--suassuna-border);
-    color: var(--suassuna-green-dark);
+    color: var(--suassuna-navy-dark);
   }
 
   /* Badge de status: ouro suave com texto verde escuro. */
@@ -483,9 +494,9 @@
     white-space: nowrap;
   }
 
-  .hub-badge--gold {
-    background-color: var(--suassuna-gold-soft);
-    color: var(--suassuna-green-dark);
+  .hub-badge--accent {
+    background-color: var(--suassuna-accent-soft);
+    color: var(--suassuna-navy-dark);
   }
 
   /* Chip de categoria: creme, borda neutra, texto verde. --on-dark para uso sobre o hero. */
@@ -493,9 +504,9 @@
     display: inline-block;
     padding: 3px 8px;
     border-radius: var(--radius-chip);
-    background-color: var(--suassuna-cream);
+    background-color: var(--suassuna-mist);
     border: 1px solid var(--suassuna-border);
-    color: var(--suassuna-green);
+    color: var(--suassuna-navy);
     font-size: 12px;
     font-weight: 500;
     white-space: nowrap;
@@ -505,5 +516,64 @@
     background-color: rgb(255 255 255 / 0.08);
     border-color: rgb(255 255 255 / 0.22);
     color: rgb(255 255 255 / 0.92);
+  }
+}
+
+/*
+ * Composição do hero e conexões. Movimento discreto: o tracejado das linhas desliza devagar e
+ * desaparece com prefers-reduced-motion.
+ */
+@layer components {
+  .hub-flow-line {
+    stroke: rgb(127 220 200 / 0.55);
+    stroke-width: 1.5;
+    stroke-dasharray: 4 6;
+    fill: none;
+    vector-effect: non-scaling-stroke;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hub-flow-line {
+      animation: hub-dash 2.4s linear infinite;
+    }
+  }
+
+  /* Card flutuante do hero: película clara sobre o azul, sem desfoque. */
+  .hub-float {
+    border-radius: var(--radius-group);
+    background-color: rgb(255 255 255 / 0.09);
+    border: 1px solid rgb(255 255 255 / 0.18);
+    transition:
+      transform 220ms ease,
+      border-color 220ms ease,
+      background-color 220ms ease;
+  }
+
+  @media (hover: hover) {
+    .hub-float:hover {
+      background-color: rgb(255 255 255 / 0.14);
+      border-color: var(--suassuna-accent);
+    }
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .hub-float:hover {
+      transform: translateY(-3px);
+    }
+  }
+
+  /* Filtros roláveis no mobile, sem barra de rolagem visível. */
+  .hub-scroll-x {
+    scrollbar-width: none;
+  }
+
+  .hub-scroll-x::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes hub-dash {
+  to {
+    stroke-dashoffset: -20;
   }
 }

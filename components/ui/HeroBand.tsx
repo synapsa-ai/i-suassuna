@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef } from "react";
 import { HubBackground } from "@/components/layout/HubBackground";
 
 /**
- * Faixa verde do topo das páginas: degradê institucional + curvas douradas discretas.
+ * Faixa azul do topo das páginas: azul profundo + curvas turquesa discretas.
  * É compartilhada pelo hero da home e pelos cabeçalhos das páginas internas.
  */
 export function HeroBand({ className = "", children, ...props }: ComponentPropsWithoutRef<"div">) {
