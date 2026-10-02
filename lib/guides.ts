@@ -34,6 +34,8 @@ export type ImplementationGuide = {
   keywords: string[];
   /** Implementação tecnológica de referência, quando houver. */
   referenceImplementation?: string;
+  /** Guia de Implementação FHIR publicado para este guia, quando existir (abre em nova aba). */
+  fhirIg?: { url: string; label: string };
   /** Parágrafo complementar exibido na Visão Geral. */
   overview: string;
   /** Temas que poderão ser contemplados no futuro (não é escopo fechado). */
@@ -64,6 +66,7 @@ export const implementationGuides: readonly ImplementationGuide[] = [
       "referência",
     ],
     referenceImplementation: "Synapsa",
+    fhirIg: { url: "https://synapsa-fhir-ig.vercel.app/index.html", label: "Guia de Implementação FHIR Synapsa" },
     overview:
       "O Core reúne os conceitos que atravessam diferentes contextos de cuidado em saúde mental, para que áreas específicas possam reutilizá-los em vez de redefini-los a cada projeto. O Guia é definido e mantido pelo Instituto Suassuna; a Synapsa é a primeira implementação tecnológica de referência.",
     scopeTopics: ["Pessoa atendida", "Profissional", "Organização", "Atendimento", "Avaliação"],

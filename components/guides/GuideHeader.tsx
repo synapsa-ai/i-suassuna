@@ -3,6 +3,7 @@ import { CategoryTag, StatusBadge } from "@/components/guides/GuideMeta";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Container } from "@/components/ui/Container";
 import { HeroBand } from "@/components/ui/HeroBand";
+import { ExternalLinkIcon } from "@/components/ui/icons";
 import { brand } from "@/lib/brand";
 import type { ImplementationGuide } from "@/lib/guides";
 
@@ -17,7 +18,7 @@ function MetaItem({ label, children, wide = false }: { label: string; children: 
   );
 }
 
-/** Cabeçalho da página do guia: faixa verde com título centralizado e metadados técnicos em cards. */
+/** Cabeçalho da página do guia: faixa azul com título centralizado e metadados técnicos em cards. */
 export function GuideHeader({ guide }: { guide: ImplementationGuide }) {
   return (
     <HeroBand className="pb-10 pt-8 text-center md:pb-12 md:pt-12">
@@ -36,6 +37,21 @@ export function GuideHeader({ guide }: { guide: ImplementationGuide }) {
         </h1>
 
         <p className="mx-auto mt-4 max-w-[720px] text-base leading-[1.6] text-white/82">{guide.description}</p>
+
+        {guide.fhirIg && (
+          <p className="mt-6">
+            <a
+              href={guide.fhirIg.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${guide.fhirIg.label} (abre em nova aba)`}
+              className="hub-button hub-button--lg"
+            >
+              Abrir {guide.fhirIg.label}
+              <ExternalLinkIcon width={16} height={16} />
+            </a>
+          </p>
+        )}
       </Container>
 
       <Container>
