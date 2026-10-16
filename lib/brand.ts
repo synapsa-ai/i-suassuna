@@ -8,17 +8,17 @@
  */
 export const brand = {
   name: "Instituto Suassuna",
-  hubName: "Suassuna Saúde Digital",
+  hubName: "Instituto Suassuna · Saúde Digital",
   hubTitle: "Guias de Implementação",
   /** Vertical do Instituto à qual o Hub pertence (aparece ao lado da logo). */
-  vertical: "Saúde Digital",
+  vertical: "Guias de Implementação",
   siteUrl: "https://institutosuassuna.com.br",
   /** Contato de suporte publicado no site oficial do Instituto. */
   contactEmail: "suporte@institutosuassuna.com",
   logo: {
     src: "/brand/logo-instituto-suassuna.svg",
-    width: 158,
-    height: 50,
+    width: 187,
+    height: 46,
     alt: "Instituto Suassuna",
   },
 } as const;

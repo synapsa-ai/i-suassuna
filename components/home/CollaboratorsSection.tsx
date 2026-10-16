@@ -35,13 +35,16 @@ export function CollaboratorsSection() {
                 <li key={collaborator.name} className="hub-group flex flex-col">
                   <div className="hub-group-head flex items-center gap-4 px-5 py-4 md:px-6 md:py-5">
                     {collaborator.logo ? (
-                      <Image
-                        src={collaborator.logo.src}
-                        alt=""
-                        width={collaborator.logo.width}
-                        height={collaborator.logo.height}
-                        className="h-10 w-auto"
-                      />
+                      <span className="flex h-16 w-44 shrink-0 items-center justify-center rounded-tile bg-white px-3 shadow-[0_6px_18px_rgb(8_29_47/0.08)]">
+                        <Image
+                          src={collaborator.logo.src}
+                          alt={`Logo ${collaborator.name}`}
+                          width={collaborator.logo.width}
+                          height={collaborator.logo.height}
+                          loading="eager"
+                          className="max-h-14 max-w-full object-contain"
+                        />
+                      </span>
                     ) : (
                       <span
                         aria-hidden="true"
@@ -50,7 +53,13 @@ export function CollaboratorsSection() {
                         <Icon width={20} height={20} />
                       </span>
                     )}
-                    <h4 className="flex-1 text-base font-semibold leading-[1.3] md:text-lg">{collaborator.name}</h4>
+                    <h4
+                      className={
+                        collaborator.logo ? "sr-only" : "flex-1 text-base font-semibold leading-[1.3] md:text-lg"
+                      }
+                    >
+                      {collaborator.name}
+                    </h4>
                   </div>
 
                   <div className="flex flex-1 flex-col gap-4 px-5 py-4 md:px-6 md:py-5">

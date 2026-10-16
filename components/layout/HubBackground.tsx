@@ -1,14 +1,12 @@
-const WAVE_COUNT = 33;
+const WAVE_COUNT = 24;
 
-/** As mesmas 33 curvas de antes: y de 612 a 36 (passo 18), opacidade de 1,00 a 0,08. Só a cor mudou (turquesa). */
 const waves = Array.from({ length: WAVE_COUNT }, (_, index) => ({
-  y: 612 - index * 18,
+  y: 620 - index * 24,
   opacity: Number((1 - (index * 0.92) / (WAVE_COUNT - 1)).toFixed(2)),
 }));
 
 /**
- * Curvas decorativas do hero: turquesa a 15%, como assinatura discreta. Preenche a faixa verde onde é
- * colocado (HeroBand); não interativo e oculto de leitores de tela.
+ * Grade e curvas usam as formas geométricas da marca sem competir com o conteúdo.
  */
 export function HubBackground() {
   return (
@@ -16,9 +14,16 @@ export function HubBackground() {
       aria-hidden="true"
       focusable="false"
       viewBox="0 0 1422 700"
-      className="pointer-events-none absolute inset-0 z-0 size-full text-accent opacity-15"
+      className="pointer-events-none absolute inset-0 z-0 size-full text-accent opacity-20"
     >
-      <g stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" fill="none">
+      <defs>
+        <linearGradient id="brand-wave" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="currentColor" stopOpacity="0" />
+          <stop offset="0.55" stopColor="currentColor" />
+          <stop offset="1" stopColor="#0076bf" stopOpacity="0.25" />
+        </linearGradient>
+      </defs>
+      <g stroke="url(#brand-wave)" strokeWidth={1.25} strokeLinecap="round" fill="none">
         {waves.map((wave) => (
           <path
             key={wave.y}

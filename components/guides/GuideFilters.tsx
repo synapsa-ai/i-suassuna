@@ -9,12 +9,13 @@ const options: readonly { id: GuideFilter; label: string }[] = [
 
 type GuideFiltersProps = {
   labelId: string;
+  controlsId: string;
   value: GuideFilter;
   onChange: (value: GuideFilter) => void;
 };
 
 /** Filtros por categoria: pílulas brancas; a selecionada (aria-pressed) fica em azul escuro; rolam na horizontal no mobile. */
-export function GuideFilters({ labelId, value, onChange }: GuideFiltersProps) {
+export function GuideFilters({ labelId, controlsId, value, onChange }: GuideFiltersProps) {
   return (
     <div>
       <p id={labelId} className="sr-only">
@@ -30,6 +31,7 @@ export function GuideFilters({ labelId, value, onChange }: GuideFiltersProps) {
             key={option.id}
             type="button"
             aria-pressed={option.id === value}
+            aria-controls={controlsId}
             onClick={() => onChange(option.id)}
             className="hub-pill shrink-0 max-md:px-3.5 max-md:py-1.5 max-md:text-[13px]"
           >

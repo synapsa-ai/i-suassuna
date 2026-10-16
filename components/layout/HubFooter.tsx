@@ -14,7 +14,9 @@ export function HubFooter() {
     <footer className="on-dark border-t-[3px] border-accent bg-brand-deep">
       <Container className="grid gap-10 py-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:py-14">
         <div>
-          <BrandLogo tone="white" className="h-10" />
+          <span className="inline-flex rounded-control bg-white px-3 py-2 shadow-[0_10px_30px_rgb(0_0_0/0.16)]">
+            <BrandLogo className="h-10" />
+          </span>
           <p className="mt-4 text-lg font-semibold leading-snug text-white">{brand.vertical}</p>
           <p className="mt-2 max-w-sm text-sm leading-6">
             Conhecimento clínico, padrões e tecnologia para construir uma saúde mais interoperável.

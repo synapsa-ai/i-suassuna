@@ -2,12 +2,13 @@ import { CloseIcon, SearchIcon } from "@/components/ui/icons";
 
 type GuideSearchProps = {
   id: string;
+  controlsId: string;
   value: string;
   onChange: (value: string) => void;
 };
 
 /** Campo de busca branco com borda neutra; o foco (borda e anel turquesa) vem de .hub-field. */
-export function GuideSearch({ id, value, onChange }: GuideSearchProps) {
+export function GuideSearch({ id, controlsId, value, onChange }: GuideSearchProps) {
   return (
     <div role="search" className="hub-field px-4 py-3 md:px-6 md:py-4">
       <label htmlFor={id} className="sr-only">
@@ -17,6 +18,7 @@ export function GuideSearch({ id, value, onChange }: GuideSearchProps) {
       <input
         id={id}
         type="search"
+        aria-controls={controlsId}
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder="Buscar guias, recursos ou áreas de saúde..."

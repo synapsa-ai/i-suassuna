@@ -4,8 +4,7 @@ import { brand } from "@/lib/brand";
 /**
  * Logo do Instituto Suassuna. O arquivo e as dimensões vêm de lib/brand.ts,
  * então trocar o placeholder pela logo oficial não exige alterar componentes.
- * `tone="white"` renderiza a logo em branco por filtro CSS (para fundos azuis escuros; funciona com
- * qualquer arquivo de fundo transparente); `"original"` mantém as cores do arquivo.
+ * `tone="white"` renderiza a assinatura em branco para fundos escuros; `"original"` mantém as cores oficiais.
  */
 export function BrandLogo({ className = "", tone = "original" }: { className?: string; tone?: "original" | "white" }) {
   const { src, width, height, alt } = brand.logo;
@@ -17,7 +16,7 @@ export function BrandLogo({ className = "", tone = "original" }: { className?: s
       height={height}
       priority
       unoptimized={src.endsWith(".svg")}
-      className={`w-auto ${tone === "white" ? "brightness-0 invert" : ""} ${className}`}
+      className={`w-auto object-contain ${tone === "white" ? "brightness-0 invert" : ""} ${className}`}
     />
   );
 }

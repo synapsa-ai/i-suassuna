@@ -6,7 +6,7 @@ export type Collaborator = {
   href?: string;
   /** Define o ícone do grupo (instituição por padrão). */
   kind?: "institution" | "technology";
-  /** Preparado para logo oficial futura (arquivo em public/brand/). */
+  /** Logo oficial da organização, quando disponível. */
   logo?: { src: string; width: number; height: number };
 };
 
@@ -16,10 +16,20 @@ export const collaborators: readonly Collaborator[] = [
     name: "Instituto Suassuna",
     role: "Define e mantém os Guias de Implementação.",
     href: brand.siteUrl,
+    logo: {
+      src: brand.logo.src,
+      width: brand.logo.width,
+      height: brand.logo.height,
+    },
   },
   {
     name: "Synapsa",
     role: "Primeira implementação tecnológica de referência.",
     kind: "technology",
+    logo: {
+      src: "/brand/synapsa-logo.png",
+      width: 800,
+      height: 320,
+    },
   },
 ];

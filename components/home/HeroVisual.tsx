@@ -29,10 +29,10 @@ const lines = [
 function Node({ label, Icon, x, y }: { label: string; Icon: typeof UserIcon; x: number; y: number }) {
   return (
     <li
-      className="hub-float absolute flex w-[27%] -translate-x-1/2 -translate-y-1/2 items-center gap-2 px-3 py-2.5"
+      className="hub-float absolute flex w-[28%] -translate-x-1/2 -translate-y-1/2 items-center gap-2 px-3 py-2.5"
       style={{ left: `${x}%`, top: `${y}%` }}
     >
-      <span className="flex size-8 shrink-0 items-center justify-center rounded-tile bg-accent text-brand-deep">
+      <span className="flex size-8 shrink-0 items-center justify-center rounded-tile bg-accent text-white shadow-[0_6px_16px_rgb(0_148_61/0.35)]">
         <Icon width={18} height={18} />
       </span>
       <span className="text-[13px] font-medium leading-tight text-white">{label}</span>
@@ -46,9 +46,17 @@ function Node({ label, Icon, x, y }: { label: string; Icon: typeof UserIcon; x: 
  */
 export function HeroVisual() {
   return (
-    <div role="img" aria-label="Da pessoa e do atendimento aos dados de saúde, padronizados em FHIR e conectados a diferentes sistemas">
+    <div
+      className="hub-tech-panel"
+      role="img"
+      aria-label="Da pessoa e do atendimento aos dados de saúde, padronizados em FHIR e conectados a diferentes sistemas"
+    >
+      <div aria-hidden="true" className="hub-tech-bar">
+        <span className="flex items-center gap-2"><i className="hub-live-dot" /> Fluxo de interoperabilidade</span>
+        <span className="font-mono text-[10px] text-white/38">SYNC 4.0.1</span>
+      </div>
       {/* Desktop */}
-      <div className="relative mx-auto hidden aspect-[5/4.4] w-full max-w-[560px] md:block">
+      <div className="relative mx-auto hidden aspect-[5/4.4] w-full max-w-[560px] p-3 md:block">
         <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 size-full">
           {lines.map((d) => (
             <path key={d} d={d} className="hub-flow-line" />
@@ -57,9 +65,9 @@ export function HeroVisual() {
 
         <div
           aria-hidden="true"
-          className="absolute left-1/2 top-1/2 flex size-[22%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-accent bg-brand-deep shadow-[0_0_0_10px_rgb(24_175_145/0.12)]"
+          className="hub-fhir-core absolute left-1/2 top-1/2 flex size-[22%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-accent bg-brand-deep"
         >
-          <span className="text-lg font-bold tracking-wide text-accent-soft lg:text-xl">FHIR</span>
+          <span className="font-heading text-lg font-bold tracking-wide text-white lg:text-xl">FHIR</span>
         </div>
 
         <ul className="absolute inset-0">
@@ -82,7 +90,7 @@ export function HeroVisual() {
       </div>
 
       {/* Mobile: fluxo vertical */}
-      <ol className="mx-auto flex max-w-[320px] flex-col items-stretch gap-0 md:hidden">
+      <ol className="mx-auto flex max-w-[320px] flex-col items-stretch gap-0 p-4 md:hidden">
         {[...steps.map((step) => step.label), "FHIR", "Sistemas conectados"].map((label, index, all) => (
           <li key={label} className="flex flex-col items-center">
             <span className="hub-float w-full px-4 py-3 text-center text-sm font-medium text-white">{label}</span>

@@ -1,15 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Roboto } from "next/font/google";
+import { League_Spartan, Poppins } from "next/font/google";
 import "./globals.css";
 import { HubFooter } from "@/components/layout/HubFooter";
 import { HubHeader } from "@/components/layout/HubHeader";
 import { brand } from "@/lib/brand";
 
-// Roboto, a fonte já integrada ao projeto; a mudança de identidade está em cor, peso e contraste.
-const roboto = Roboto({
+// A identidade do site institucional combina Poppins no texto com Spartan nos títulos.
+const poppins = Poppins({
   subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "700"],
-  variable: "--font-roboto",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+  display: "swap",
+});
+
+const spartan = League_Spartan({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-spartan",
   display: "swap",
 });
 
@@ -30,12 +36,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#103658",
+  themeColor: "#081d2f",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR" data-scroll-behavior="smooth" className={roboto.variable}>
+    <html lang="pt-BR" data-scroll-behavior="smooth" className={`${poppins.variable} ${spartan.variable}`}>
       <body className="flex min-h-screen flex-col">
         <a
           href="#conteudo"
