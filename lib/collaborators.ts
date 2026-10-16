@@ -25,6 +25,7 @@ export const collaborators: readonly Collaborator[] = [
   {
     name: "Synapsa",
     role: "Primeira implementação tecnológica de referência.",
+    href: "https://synapsa.com.br",
     kind: "technology",
     logo: {
       src: "/brand/synapsa-logo.png",
